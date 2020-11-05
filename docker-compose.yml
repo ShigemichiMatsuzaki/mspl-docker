@@ -1,32 +1,17 @@
 version: "2.3"
-services: 
-  train-dicenet-cityscapes:
-    container_name: train-dicenet-cityscapes
-    runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
-    build: .
-    working_dir: /root/EdgeNets/.
-    command: sh train_dicenet_cityscapes.sh
-    volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
-    environment:
-      - CUDA_VISIBLE_DEVICES=0,1
-    shm_size: 5G
-    tty: true
 
+services: 
   train-espnetv2-cityscapes:
     container_name: train-espnetv2-cityscapes
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_cityscapes.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset/:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=1
     shm_size: 5G
@@ -35,14 +20,14 @@ services:
   train-espnetv2-greenhouse:
     container_name: train-espnetv2-greenhouse
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_greenhouse.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -51,30 +36,30 @@ services:
   train-espdnet-greenhouse:
     container_name: train-espdnet-greenhouse
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnet_greenhouse.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
-      - CUDA_VISIBLE_DEVICES=0,1
+      - CUDA_VISIBLE_DEVICES=2
     shm_size: 5G
     tty: true
 
   train-espdnet-mult-greenhouse:
     container_name: train-espdnet-mult-greenhouse
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnet_mult_greenhouse.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -83,14 +68,14 @@ services:
   train-espdnet-crst-greenhouse:
     container_name: train-espdnet-crst-greenhouse
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_greenhouse_mr.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -99,14 +84,14 @@ services:
   train-espdnet-crst-greenhouse-outsource-2:
     container_name: train-espdnet-crst-greenhouse-outsource-2
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_greenhouse_mr_outsource2.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -116,14 +101,14 @@ services:
   train-espdnet-crst-greenhouse-outsource:
     container_name: train-espdnet-crst-greenhouse-outsource
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_greenhouse_mr_outsource.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -132,14 +117,14 @@ services:
   train-espdnet-uest-greenhouse-outsource:
     container_name: train-espdnet-uest-greenhouse-outsource
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_greenhouse_uest_outsource.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -148,14 +133,14 @@ services:
   train-espdnet-uest-greenhouse-outsource2:
     container_name: train-espdnet-uest-greenhouse-outsource2
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_greenhouse_uest_outsource2.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -164,14 +149,14 @@ services:
   train-espdnet-uest-cucumber-outsource:
     container_name: train-espdnet-uest-cucumber-outsource
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh espdnet_cucumber_uest_outsource.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -180,14 +165,14 @@ services:
   train-espnetv2-ishihara:
     container_name: train-espnetv2-ishihara
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_ishihara_rgb.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -196,14 +181,14 @@ services:
   train-espdnet-ishihara:
     container_name: train-espdnet-ishihara
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_ishihara_rgbd.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -212,14 +197,14 @@ services:
   train-espdnet-ishihara-2:
     container_name: train-espdnet-ishihara-2
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_ishihara_rgbd.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -228,14 +213,14 @@ services:
   train-espdnet-sun:
     container_name: train-espdnet-sun
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnet_sun_rgbd.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -243,31 +228,31 @@ services:
 
   train-espdnet-camvid:
     container_name: train-espdnet-camvid
-    runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    runtime: nvidia
+    working_dir: /root/espdnet/
     command: sh train_espdnet_camvid.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
-      - CUDA_VISIBLE_DEVICES=0,1
+      - CUDA_VISIBLE_DEVICES=2
     shm_size: 5G
     tty: true
 
   train-espdnetue-camvid:
     container_name: train-espdnetue-camvid
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnetue_camvid.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -276,16 +261,16 @@ services:
   train-espdnetue-camvid-label-conv:
     container_name: train-espdnetue-camvid-label-conv
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnetue_camvid_label_conversion_at_once.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
-      - CUDA_VISIBLE_DEVICES=0,1
+      - CUDA_VISIBLE_DEVICES=2
     shm_size: 5G
     tty: true
 
@@ -293,14 +278,14 @@ services:
   train-espdnet-camvid-label-conversion:
     container_name: train-espdnet-camvid-label-conversion
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espdnet_camvid_label_conversion.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 1G
@@ -310,14 +295,14 @@ services:
   train-espnetv2-camvid:
     container_name: train-espnetv2-camvid
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_espnetv2_camvid.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -327,14 +312,14 @@ services:
   train-depth-autoencoder:
     container_name: train-depth-autoencoder
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: sh train_depth_ae.sh
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -343,14 +328,14 @@ services:
   test-nid:
     container_name: test-nid
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: python ./loss_fns/test_nid.py
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -359,14 +344,14 @@ services:
   test-load-weight:
     container_name: test-load-weight
     runtime: nvidia
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     command: python ./model/segmentation/espdnet_ue.py
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
     shm_size: 5G
@@ -374,41 +359,27 @@ services:
 
   per-image-analysis:
     container_name: per-image-analysis
-    image: pytorch-edgenets:torch1.1.0-py3.6
+    image: pytorch-edgenets:torch1.2.0-py3.6
     runtime: nvidia
     build: .
-    working_dir: /root/EdgeNets/.
+    working_dir: /root/espdnet/
     entrypoint: >
        python per_image_analysis.py
     volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/dataset/matsuzaki:/tmp/dataset
-      - /media/data/matsuzaki/runs:/tmp/runs
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/dataset:/tmp/dataset
+      - /data/aisl/matsuzaki/runs/:/tmp/runs/
     environment:
       - CUDA_VISIBLE_DEVICES=0,1
 
   tensorboard:
     container_name: tensorboard
-    image: pytorch-crst:torch1.0.1-py3.6
+    image: pytorch-edgenets:20.03-py3
     entrypoint: tensorboard --logdir /tmp/runs
     build: .
     ports:
       - 60007:6006
+    mem_limit: 15g
     volumes:
-      - ./EdgeNets/:/tmp/EdgeNets/
-      - /media/data/matsuzaki/runs/results_segmentation:/tmp/runs
-        #      - ./EdgeNets/results_segmentation/:/tmp/runs/
-
-  convert-to-pt:
-    container_name: convert-to-pt-crst
-    image: pytorch-crst:torch1.4.0-py3.6
-    runtime: nvidia
-    build: .
-    working_dir: /root/EdgeNets/.
-    entrypoint: >
-       python convert-to-pt.py
-    volumes:
-      - ./EdgeNets/:/root/EdgeNets/
-      - /media/data/matsuzaki/results:/tmp/results
-    environment:
-      - CUDA_VISIBLE_DEVICES=0,1
+      - ./espdnet/:/root/espdnet/
+      - /data/aisl/matsuzaki/runs/uest/for-paper:/tmp/runs/
