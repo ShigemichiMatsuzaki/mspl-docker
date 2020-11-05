@@ -1,3 +1,3 @@
 [submodule "espdnet"]
 	path = espdnet
-	url = https://aisl-serv6.aisl.cs.tut.ac.jp:20443/ShigemichiMatsuzaki/espdnet
+	url = https://github.com/ShigemichiMatsuzaki/MSPL.git
